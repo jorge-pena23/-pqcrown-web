@@ -14,6 +14,28 @@
    necesita cambiar nada, porque siempre le pide los productos
    a esta única función.
    ============================================================ */
+const SUPABASE_URL = 'https://ofbtakknyxgoflrikldm.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_78wCYHvalSEoLTyrKdN76g_76DIXcOM';
+ 
+let supabaseClient = null;
+if (window.supabase && !SUPABASE_URL.includes('TU_SUPABASE')) {
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+ 
+async function getProducts() {
+  if (!supabaseClient) return PRODUCTS_DB;
+ 
+  const { data, error } = await supabaseClient
+    .from('productos')
+    .select('*')
+    .order('precio', { ascending: true });
+ 
+  if (error || !data || data.length === 0) {
+    console.warn('No se pudo leer Supabase, usando catálogo local:', error);
+    return PRODUCTS_DB;
+  }
+  return data;
+}
 
 const PRODUCTS_DB = [
   {
