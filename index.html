@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PQ CROWN · Gorras de autor</title>
+<link rel="icon" type="image/png" href="./img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="logo" href="#top">
+    <img src="./imagen1212-Photoroom.png" alt="PQ Crown" class="logo__img">
+    <span class="logo__word">PQ CROWN</span>
+  </a>
+  <nav class="topbar__nav">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#como-funciona">Cómo comprar</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero" id="top">
+    <div class="hero__text">
+      <span class="hero__eyebrow">Edición limitada</span>
+      <h1>Gorras bordadas<br>con <em>carácter</em> de corona.</h1>
+      <p>Piezas 59FIFTY, 9FIFTY y 9FORTY con bordados de autor, elegidas una por una. Arma tu pedido y confírmalo directo por WhatsApp.</p>
+      <div class="hero__ctas">
+        <a href="#catalogo" class="btn btn--primary">Ver catálogo</a>
+        <span class="hero__note">Entrega a domicilio en El Salvador</span>
+      </div>
+    </div>
+    <div class="hero__art">
+      <div class="hero__frame">
+        <img src="./1.jpeg" alt="Gorra PQ Crown, bordado de rosas" class="hero__image">
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="como-funciona">
+    <div class="how__step">
+      <span class="how__num">I</span>
+      <p>Elige tus gorras y agrégalas al pedido.</p>
+    </div>
+    <div class="how__step">
+      <span class="how__num">II</span>
+      <p>Completa tus datos de entrega.</p>
+    </div>
+    <div class="how__step">
+      <span class="how__num">III</span>
+      <p>Confirma y te escribimos por WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="catalogo" id="catalogo">
+    <div class="catalogo__head">
+      <div>
+        <span class="hero__eyebrow">La colección</span>
+        <h2>Catálogo</h2>
+      </div>
+      <div class="filtro">
+        <label for="filtroPrecio">Precio máximo: <span id="filtroPrecioValor">$25</span></label>
+        <input type="range" id="filtroPrecio" min="15" max="25" step="0.5" value="25">
+      </div>
+    </div>
+    <div class="filtro__categorias" id="filtroCategorias">
+      <button class="chip chip--activo" data-cat="todas">Todas</button>
+      <button class="chip" data-cat="snapback">Snapback</button>
+      <button class="chip" data-cat="fitted">Fitted</button>
+      <button class="chip" data-cat="adjustable">Ajustable</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="contacto__head">
+      <span class="hero__eyebrow">Último paso</span>
+      <h2>¿Cuándo la quieres puesta?</h2>
+      <p class="contacto__sub">Confirma tu pedido y te contactamos por WhatsApp.</p>
+    </div>
+
+    <div class="pedido">
+      <div class="pedido__resumen">
+        <h3>Tu pedido</h3>
+        <ul id="listaCarrito" class="carrito__lista"></ul>
+        <p class="carrito__vacio" id="carritoVacio">Todavía no agregas ninguna gorra.</p>
+        <div class="carrito__total">
+          <span>Total</span>
+          <strong id="carritoTotal">$0.00</strong>
+        </div>
+      </div>
+
+      <form class="pedido__form" id="formPedido">
+        <label>
+          Tu nombre
+          <input type="text" id="nombre" required placeholder="Ej. Carlos Martínez">
+        </label>
+        <div class="form__fila">
+          <label>
+            Fecha de entrega
+            <input type="date" id="fecha" required>
+          </label>
+          <label>
+            Hora de entrega
+            <select id="hora" required>
+              <option value="">Elige una hora</option>
+              <option>8:00 AM</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+              <option>5:00 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Dirección de entrega
+          <input type="text" id="direccion" required placeholder="Ej. Col. Escalón, San Salvador">
+        </label>
+        <label>
+          Notas o personalización (opcional)
+          <textarea id="notas" rows="2" placeholder="Ej. talla, color de bordado, etc."></textarea>
+        </label>
+        <button type="submit" class="btn btn--whatsapp" id="btnWhatsapp">
+          Enviar pedido por WhatsApp
+        </button>
+        <p class="form__aviso" id="avisoVacio">Agrega al menos una gorra antes de enviar tu pedido.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>PQ CROWN · El Salvador · Gorras de autor.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
